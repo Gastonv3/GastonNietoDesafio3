@@ -1,0 +1,162 @@
+<div class="row g-0">
+    <div class="col-12">
+    <div class="contenedor ">
+        <ng-container *ngIf="mostrarAltaAlumno">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        Nuevo Alumno
+                        </div>
+                        <form [formGroup]="this.formularioAlta" (ngSubmit)="CargarAlumno()">
+                            <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" formControlName="nombre" required>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('nombre')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Curso</label>
+                                        <select class="form-select" aria-label="Default select example"formControlName="curso" required>
+                                            <option [value]="">Sin definir</option>
+                                            <option [value]="cur.nombre" *ngFor="let cur of this.cursosArray">{{ cur.nombre }}</option>
+                                        </select>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('curso')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Nota</label>
+                                        <input type="number" class="form-control" formControlName="nota"required>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('nota')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                                        <select class="form-select" aria-label="Default select example" formControlName="estado" required>
+                                            <option [value]="">Sin definir</option>
+                                            <option value="Aprobado">Aprobado</option>
+                                            <option value="Reprobado">Reprobado</option>
+                                        </select>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('estado')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div style="display: flex; justify-content: space-between; padding: 5px;">
+                                    <button type="button" class="btn btn-secondary" (click)="cancelarCarga()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="this.formularioAlta.status == 'INVALID'">Cargar</button>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="mostrarModificacion">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        Modificiar Alumno
+                        </div>
+                        <form [formGroup]="this.formularioAlta" (ngSubmit)="procesarModificacion()">
+                            <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" formControlName="nombre" required>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('nombre')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Curso</label>
+                                        <select class="form-select" aria-label="Default select example"formControlName="curso" required>
+                                            <option [value]="">Sin definir</option>
+                                            <option [value]="cur.nombre" *ngFor="let cur of this.cursosArray">{{ cur.nombre }}</option>
+                                        </select>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('curso')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Nota</label>
+                                        <input type="number" class="form-control" formControlName="nota"required>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('nota')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                                        <select class="form-select" aria-label="Default select example" formControlName="estado" required>
+                                            <option [value]="">Sin definir</option>
+                                            <option value="Aprobado">Aprobado</option>
+                                            <option value="Reprobado">Reprobado</option>
+                                        </select>
+                                        <div class="invalid-feedback" style="display: block;">
+                                            <span *ngIf="formularioAlta.get('estado')?.errors?.required">Es un campo requerido</span>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div style="display: flex; justify-content: space-between; padding: 5px;">
+                                    <button type="button" class="btn btn-secondary" (click)="cancelarCarga()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="this.formularioAlta.status == 'INVALID'">Modificar</button>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="mostrarGrid">
+            <div class="card">
+                <div class="card-header">
+                    <div style="display: flex; justify-content: space-between; padding: 5px;">
+                        <p style="margin-top: 10px;">Listado de Alumnos</p>
+                        <button type="button" class="btn btn-primary" (click)="NuevoAlumno()">Nuevo Alumno</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Estado</th>
+                            <th style="width: 10px;">Editar</th>
+
+                        </tr>
+                        </thead>
+                        <tbody *ngFor="let item of this.claseA; index as i">
+                        <tr>
+                            <th class="table-primary">{{i+ 1}}</th>
+                            <td class="table-primary">{{item.nombre}}</td>
+                            <td class="table-primary">{{item.curso}}</td>
+                            <td class="table-primary">{{item.nota}}</td>
+                            <td class="table-primary" [ngClass]="{'table-danger': item.estado == 'Reprobado','table-primary': item.estado == 'Aprobado'}">{{item.estado}}</td>
+                            <td class="table-primary"><button type="button" class="btn btn-success" (click)="EditarAlumno(i)">Editar</button></td>
+                            
+
+                        </tr>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </ng-container>
+       
+      
+    </div>
+</div>
