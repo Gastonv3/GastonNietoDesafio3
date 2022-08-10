@@ -6,6 +6,7 @@ import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.com
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ContenidoComponent } from './components/contenido/contenido.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToolbarComponent,
     ContenidoComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule, FormsModule],
+  imports: [BrowserModule, ReactiveFormsModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

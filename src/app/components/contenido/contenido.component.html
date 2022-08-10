@@ -8,34 +8,34 @@
                         <div class="card-header">
                         Nuevo Alumno
                         </div>
-                        <form [formGroup]="this.formularioAlta" (ngSubmit)="CargarAlumno()">
+                        <form [formGroup]="formularioAlta" (ngSubmit)="CargarAlumno()">
                             <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                        <label class="form-label">Nombre</label>
                                         <input type="text" class="form-control" formControlName="nombre" required>
                                         <div class="invalid-feedback" style="display: block;">
                                             <span *ngIf="formularioAlta.get('nombre')?.errors?.required">Es un campo requerido</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Curso</label>
+                                        <label class="form-label">Curso</label>
                                         <select class="form-select" aria-label="Default select example"formControlName="curso" required>
                                             <option [value]="">Sin definir</option>
-                                            <option [value]="cur.nombre" *ngFor="let cur of this.cursosArray">{{ cur.nombre }}</option>
+                                            <option [value]="cur.nombre" *ngFor="let cur of cursosArray">{{ cur.nombre }}</option>
                                         </select>
                                         <div class="invalid-feedback" style="display: block;">
                                             <span *ngIf="formularioAlta.get('curso')?.errors?.required">Es un campo requerido</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Nota</label>
+                                        <label class="form-label">Nota</label>
                                         <input type="number" class="form-control" formControlName="nota"required>
                                         <div class="invalid-feedback" style="display: block;">
                                             <span *ngIf="formularioAlta.get('nota')?.errors?.required">Es un campo requerido</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                                        <label  class="form-label">Estado</label>
                                         <select class="form-select" aria-label="Default select example" formControlName="estado" required>
                                             <option [value]="">Sin definir</option>
                                             <option value="Aprobado">Aprobado</option>
@@ -50,7 +50,7 @@
                             <div class="card-footer text-muted">
                                 <div style="display: flex; justify-content: space-between; padding: 5px;">
                                     <button type="button" class="btn btn-secondary" (click)="cancelarCarga()">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary" [disabled]="this.formularioAlta.status == 'INVALID'">Cargar</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="formularioAlta.status == 'INVALID'">Cargar</button>
 
                                 </div>
 
@@ -70,14 +70,14 @@
                         <form [formGroup]="this.formularioAlta" (ngSubmit)="procesarModificacion()">
                             <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                        <label class="form-label">Nombre</label>
                                         <input type="text" class="form-control" formControlName="nombre" required>
                                         <div class="invalid-feedback" style="display: block;">
                                             <span *ngIf="formularioAlta.get('nombre')?.errors?.required">Es un campo requerido</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Curso</label>
+                                        <label  class="form-label">Curso</label>
                                         <select class="form-select" aria-label="Default select example"formControlName="curso" required>
                                             <option [value]="">Sin definir</option>
                                             <option [value]="cur.nombre" *ngFor="let cur of this.cursosArray">{{ cur.nombre }}</option>
@@ -87,14 +87,14 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Nota</label>
+                                        <label class="form-label">Nota</label>
                                         <input type="number" class="form-control" formControlName="nota"required>
                                         <div class="invalid-feedback" style="display: block;">
                                             <span *ngIf="formularioAlta.get('nota')?.errors?.required">Es un campo requerido</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                                        <label class="form-label">Estado</label>
                                         <select class="form-select" aria-label="Default select example" formControlName="estado" required>
                                             <option [value]="">Sin definir</option>
                                             <option value="Aprobado">Aprobado</option>
@@ -109,7 +109,7 @@
                             <div class="card-footer text-muted">
                                 <div style="display: flex; justify-content: space-between; padding: 5px;">
                                     <button type="button" class="btn btn-secondary" (click)="cancelarCarga()">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary" [disabled]="this.formularioAlta.status == 'INVALID'">Modificar</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="formularioAlta.status == 'INVALID'">Modificar</button>
 
                                 </div>
 
@@ -140,7 +140,7 @@
 
                         </tr>
                         </thead>
-                        <tbody *ngFor="let item of this.claseA; index as i">
+                        <tbody *ngFor="let item of claseA; index as i">
                         <tr>
                             <th class="table-primary">{{i+ 1}}</th>
                             <td class="table-primary">{{item.nombre}}</td>
